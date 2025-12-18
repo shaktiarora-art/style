@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Glowing Crackers & Snow Effect</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  height:100vh;
+  background: radial-gradient(circle at top, #111 0%, #000 70%);
+  overflow:hidden;
+}/* glowing lights */ .light{ position:absolute; width:4px; height:4px; background:white; border-radius:50%; box-shadow:0 0 15px 5px rgba(255,255,255,0.9); animation: twinkle 3s infinite ease-in-out; } @keyframes twinkle{ 0%,100%{opacity:0.2; transform:scale(0.5);}
+50%{opacity:1; transform:scale(1.5);}
+}
+
+/* crackers */ .cracker{ position:absolute; width:6px; height:6px; background:transparent; } .cracker::before{ content:""; position:absolute; width:80px; height:80px; border-radius:50%; border:2px solid transparent; box-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px cyan; animation: blast 2s infinite; } @keyframes blast{ 0%{transform:scale(0); opacity:1;}
+100%{transform:scale(1.5); opacity:0;}
+}
+
+/* snow */ .snow{ position:absolute; top:-10px; width:6px; height:6px; background:white; border-radius:50%; opacity:0.8; animation: snowFall linear infinite; } @keyframes snowFall{ 0%{transform:translateY(0);}
+100%{transform:translateY(110vh);}
+}
+
+/* cute message */ .message{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#fff; font-family:'Segoe UI',sans-serif; padding:30px; background:rgba(0,0,0,0.4); border-radius:20px; box-shadow:0 0 30px rgba(255,255,255,0.6); animation: glowText 3s infinite alternate; } .message h1{ font-size:3rem; margin-bottom:15px; } .message p{ font-size:1.2rem; line-height:1.8; } @keyframes glowText{ from{box-shadow:0 0 20px pink;} to{box-shadow:0 0 40px cyan;} } </style>
+
+</head>
+<body>
+<div class="message">
+  <h1>💖 You Are Truly Special 💖</h1>
+  <p>
+    Every moment with you feels like a beautiful festival of lights.
+    Your smile sparkles brighter than a thousand stars, and your presence
+    fills my world with warmth, joy, and peace. 🌸<br><br>
+    Just like these glowing crackers in the sky, you light up my heart
+    in the most magical way. No matter how dark the night gets,
+    your kindness, laughter, and love keep shining endlessly. ✨<br><br>
+    Stay happy, stay amazing, and never forget how precious you are.
+    This little animated sky is just a tiny reflection of
+    how special you make everything around you. 💫
+  </p>
+</div><!-- lights --><script>
+for(let i=0;i<80;i++){
+  let light=document.createElement('div');
+  light.className='light';
+  light.style.left=Math.random()*100+'vw';
+  light.style.top=Math.random()*100+'vh';
+  light.style.animationDelay=Math.random()*3+'s';
+  document.body.appendChild(light);
+}
+
+// crackers
+for(let i=0;i<20;i++){
+  let cracker=document.createElement('div');
+  cracker.className='cracker';
+  cracker.style.left=Math.random()*100+'vw';
+  cracker.style.top=Math.random()*80+'vh';
+  document.body.appendChild(cracker);
+}
+
+// snow
+for(let i=0;i<120;i++){
+  let snow=document.createElement('div');
+  snow.className='snow';
+  snow.style.left=Math.random()*100+'vw';
+  snow.style.animationDuration=3+Math.random()*5+'s';
+  snow.style.animationDelay=Math.random()*5+'s';
+  document.body.appendChild(snow);
+}
+</script></body>
+</html>
